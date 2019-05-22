@@ -45,14 +45,14 @@ public class FilePicker {
     private String lastImageUri = null;
     private String lastImagePath = null;
 
-    private FilePicker(Activity activity, String folder) {
+    public FilePicker(Activity activity, String folder) {
         this.activity = activity;
         PreferenceManager.getDefaultSharedPreferences(activity)
                 .edit().putString("folder_name", folder)
                 .apply();
     }
 
-    private FilePicker(Fragment fragment, String folder) {
+    public FilePicker(Fragment fragment, String folder) {
         this.activity = fragment.getActivity();
         PreferenceManager.getDefaultSharedPreferences(activity)
                 .edit().putString("folder_name", folder)
