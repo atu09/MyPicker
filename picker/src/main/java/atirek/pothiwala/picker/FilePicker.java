@@ -181,7 +181,7 @@ public class FilePicker {
                 || requestCode == Requests.REQUEST_PHOTO || requestCode == Requests.REQUEST_VIDEO) {
 
             FileSource fileSource = getFileSource(requestCode);
-            if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+            if (resultCode == Activity.RESULT_OK) {
                 if (fileSource != FileSource.CAMERA) {
                     onFilePick(data, fileSource, callbacks);
                 } else {
