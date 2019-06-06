@@ -108,7 +108,7 @@ public class FilePicker {
     public void openPickerDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Select an action");
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(activity, android.R.layout.select_dialog_singlechoice);
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(activity, R.layout.cell_picker);
         arrayAdapter.add("Camera");
         arrayAdapter.add("Photo");
         arrayAdapter.add("Video");
@@ -181,7 +181,7 @@ public class FilePicker {
                 || requestCode == Requests.REQUEST_PHOTO || requestCode == Requests.REQUEST_VIDEO) {
 
             FileSource fileSource = getFileSource(requestCode);
-            if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+            if (resultCode == Activity.RESULT_OK) {
                 if (fileSource != FileSource.CAMERA) {
                     onFilePick(data, fileSource, callbacks);
                 } else {

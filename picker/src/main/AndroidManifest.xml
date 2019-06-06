@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="atirek.pothiwala.picker" />
+<manifest package="atirek.pothiwala.picker" />
