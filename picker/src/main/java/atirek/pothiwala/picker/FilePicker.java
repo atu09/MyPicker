@@ -24,10 +24,12 @@ import java.util.Locale;
 public class FilePicker {
 
     public interface Requests {
-        int REQUEST_CAMERA = 7456;
-        int REQUEST_PHOTO = 7457;
-        int REQUEST_AUDIO = 7458;
-        int REQUEST_VIDEO = 7459;
+        int REQUEST_PHOTO_CAPTURE = 7454;
+        int REQUEST_AUDIO_CAPTURE = 7455;
+        int REQUEST_VIDEO_CAPTURE = 7456;
+        int REQUEST_PHOTO_GALLERY = 7457;
+        int REQUEST_AUDIO_GALLERY = 7458;
+        int REQUEST_VIDEO_GALLERY = 7459;
         int REQUEST_DOCUMENTS = 7460;
     }
 
@@ -40,11 +42,16 @@ public class FilePicker {
     }
 
     public enum FileSource {
-        CAMERA, PHOTO, VIDEO, AUDIO, DOCUMENTS
+        PHOTO_CAPTURE, AUDIO_CAPTURE, VIDEO_CAPTURE, PHOTO_GALLERY, AUDIO_GALLERY, VIDEO_GALLERY, DOCUMENTS
     }
 
     private Activity activity;
-    private String lastImageUri = null, lastImagePath = null;
+    private String lastFileUri = null, lastFilePath = null;
+    private int recordingLimit = 30;
+
+    public void setRecordingLimit(int recordingLimit) {
+        this.recordingLimit = recordingLimit;
+    }
 
     public FilePicker(Activity activity, String folder) {
         this.activity = activity;
@@ -60,12 +67,12 @@ public class FilePicker {
                 .apply();
     }
 
-    private Uri createCameraPictureFile() throws IOException {
-        File imagePath = FileConfigure.generateNewFile(activity, "jpg");
+    private Uri createSourceFile(String extension) throws IOException {
+        File imagePath = FileConfigure.generateNewFile(activity, extension);
         String authority = String.format(Locale.getDefault(), "%s.%s", activity.getPackageName(), "fileprovider");
         Uri uri = FileProvider.getUriForFile(activity, authority, imagePath);
-        lastImageUri = uri.toString();
-        lastImagePath = imagePath.toString();
+        lastFileUri = uri.toString();
+        lastFilePath = imagePath.toString();
         return uri;
     }
 
@@ -80,13 +87,47 @@ public class FilePicker {
         return intent;
     }
 
-    private Intent createCameraIntent() {
+    private Intent createPhotoCaptureIntent() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         try {
-            Uri capturedImageUri = createCameraPictureFile();
+            Uri capturedFileUri = createSourceFile("jpg");
             //We have to explicitly grant the write permission since Intent.setFlag works only on API Level >=20
-            grantWritePermission(activity, intent, capturedImageUri);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, capturedImageUri);
+            grantWritePermission(activity, intent, capturedFileUri);
+
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, capturedFileUri);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return intent;
+    }
+
+    private Intent createVideoCaptureIntent() {
+        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        try {
+            Uri capturedFileUri = createSourceFile("mp4");
+            //We have to explicitly grant the write permission since Intent.setFlag works only on API Level >=20
+            grantWritePermission(activity, intent, capturedFileUri);
+
+            intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+            intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, recordingLimit);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, capturedFileUri);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return intent;
+    }
+
+    private Intent createAudioCaptureIntent() {
+        Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
+        try {
+            Uri capturedFileUri = createSourceFile("mp3");
+            //We have to explicitly grant the write permission since Intent.setFlag works only on API Level >=20
+            grantWritePermission(activity, intent, capturedFileUri);
+
+            intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, recordingLimit);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, capturedFileUri);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,14 +136,18 @@ public class FilePicker {
     }
 
     private Intent createIntent(FileSource fileSource) {
-        if (fileSource == FileSource.PHOTO) {
+        if (fileSource == FileSource.PHOTO_CAPTURE) {
+            return createPhotoCaptureIntent();
+        } else if (fileSource == FileSource.AUDIO_CAPTURE) {
+            return createAudioCaptureIntent();
+        } else if (fileSource == FileSource.VIDEO_CAPTURE) {
+            return createVideoCaptureIntent();
+        } else if (fileSource == FileSource.PHOTO_GALLERY) {
             return new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        } else if (fileSource == FileSource.AUDIO) {
+        } else if (fileSource == FileSource.AUDIO_GALLERY) {
             return new Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
-        } else if (fileSource == FileSource.VIDEO) {
+        } else if (fileSource == FileSource.VIDEO_GALLERY) {
             return new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
-        } else if (fileSource == FileSource.CAMERA) {
-            return createCameraIntent();
         } else {
             return createDocumentsIntent();
         }
@@ -117,10 +162,12 @@ public class FilePicker {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Select an action");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(activity, R.layout.cell_picker);
-        arrayAdapter.add("Camera");
-        arrayAdapter.add("Photo");
-        arrayAdapter.add("Audio");
-        arrayAdapter.add("Video");
+        arrayAdapter.add("Capture Photo");
+        arrayAdapter.add("Record Audio");
+        arrayAdapter.add("Record Video");
+        arrayAdapter.add("Photo Gallery");
+        arrayAdapter.add("Audio Gallery");
+        arrayAdapter.add("Video Gallery");
         arrayAdapter.add("Document");
 
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -133,14 +180,18 @@ public class FilePicker {
         builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int position) {
-                if (position == FileSource.CAMERA.ordinal()) {
-                    openPicker(FileSource.CAMERA);
-                } else if (position == FileSource.PHOTO.ordinal()) {
-                    openPicker(FileSource.PHOTO);
-                } else if (position == FileSource.AUDIO.ordinal()) {
-                    openPicker(FileSource.AUDIO);
-                } else if (position == FileSource.VIDEO.ordinal()) {
-                    openPicker(FileSource.VIDEO);
+                if (position == FileSource.PHOTO_CAPTURE.ordinal()) {
+                    openPicker(FileSource.PHOTO_CAPTURE);
+                } if (position == FileSource.AUDIO_CAPTURE.ordinal()) {
+                    openPicker(FileSource.AUDIO_CAPTURE);
+                } if (position == FileSource.VIDEO_CAPTURE.ordinal()) {
+                    openPicker(FileSource.VIDEO_CAPTURE);
+                } else if (position == FileSource.PHOTO_GALLERY.ordinal()) {
+                    openPicker(FileSource.PHOTO_GALLERY);
+                } else if (position == FileSource.AUDIO_GALLERY.ordinal()) {
+                    openPicker(FileSource.AUDIO_GALLERY);
+                } else if (position == FileSource.VIDEO_GALLERY.ordinal()) {
+                    openPicker(FileSource.VIDEO_GALLERY);
                 } else {
                     openPicker(FileSource.DOCUMENTS);
                 }
@@ -160,26 +211,26 @@ public class FilePicker {
         }
     }
 
-    private void onCamera(FileSource fileSource, Callbacks callbacks) {
+    private void onCapture(FileSource fileSource, Callbacks callbacks) {
         try {
-            if (!TextUtils.isEmpty(lastImageUri)) {
-                revokeWritePermission(activity, Uri.parse(lastImageUri));
+            if (!TextUtils.isEmpty(lastFileUri)) {
+                revokeWritePermission(activity, Uri.parse(lastFileUri));
             }
 
-            File photoFile = null;
-            if (lastImagePath != null) {
-                photoFile = new File(lastImagePath);
+            File dataFile = null;
+            if (lastFilePath != null) {
+                dataFile = new File(lastFilePath);
             }
 
-            if (photoFile == null) {
-                Exception exception = new IllegalStateException("Unable to capture photo from camera.");
+            if (dataFile == null) {
+                Exception exception = new IllegalStateException("Unable to capture photo / video from camera.");
                 callbacks.onPickerError(exception, fileSource);
             } else {
-                callbacks.onPicked(photoFile, fileSource);
+                callbacks.onPicked(dataFile, fileSource);
             }
 
-            lastImagePath = null;
-            lastImageUri = null;
+            lastFilePath = null;
+            lastFileUri = null;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -191,10 +242,12 @@ public class FilePicker {
 
         boolean isRequested = false;
         switch (requestCode) {
-            case Requests.REQUEST_CAMERA:
-            case Requests.REQUEST_PHOTO:
-            case Requests.REQUEST_AUDIO:
-            case Requests.REQUEST_VIDEO:
+            case Requests.REQUEST_PHOTO_CAPTURE:
+            case Requests.REQUEST_AUDIO_CAPTURE:
+            case Requests.REQUEST_VIDEO_CAPTURE:
+            case Requests.REQUEST_PHOTO_GALLERY:
+            case Requests.REQUEST_AUDIO_GALLERY:
+            case Requests.REQUEST_VIDEO_GALLERY:
             case Requests.REQUEST_DOCUMENTS:
                 isRequested = true;
         }
@@ -202,11 +255,10 @@ public class FilePicker {
         if (isRequested) {
             FileSource fileSource = getFileSource(requestCode);
             if (resultCode == Activity.RESULT_OK) {
-
-                if (fileSource != FileSource.CAMERA) {
+                if (fileSource != FileSource.PHOTO_CAPTURE && fileSource != FileSource.AUDIO_CAPTURE && fileSource != FileSource.VIDEO_CAPTURE) {
                     onFilePick(data, fileSource, callbacks);
                 } else {
-                    onCamera(fileSource, callbacks);
+                    onCapture(fileSource, callbacks);
                 }
 
             } else {
@@ -216,8 +268,8 @@ public class FilePicker {
     }
 
     public File lastlyTakenButCanceledPhoto() {
-        if (lastImagePath == null) return null;
-        File file = new File(lastImagePath);
+        if (lastFilePath == null) return null;
+        File file = new File(lastFilePath);
         if (file.exists()) {
             return file;
         } else {
@@ -239,33 +291,41 @@ public class FilePicker {
 
     private static int getRequest(FileSource fileSource) {
         switch (fileSource) {
-            case CAMERA:
-                return Requests.REQUEST_CAMERA;
-            case PHOTO:
-                return Requests.REQUEST_PHOTO;
-            case AUDIO:
-                return Requests.REQUEST_AUDIO;
-            case VIDEO:
-                return Requests.REQUEST_VIDEO;
+            case PHOTO_CAPTURE:
+                return Requests.REQUEST_PHOTO_CAPTURE;
+            case AUDIO_CAPTURE:
+                return Requests.REQUEST_AUDIO_CAPTURE;
+            case VIDEO_CAPTURE:
+                return Requests.REQUEST_VIDEO_CAPTURE;
+            case PHOTO_GALLERY:
+                return Requests.REQUEST_PHOTO_GALLERY;
+            case AUDIO_GALLERY:
+                return Requests.REQUEST_AUDIO_GALLERY;
+            case VIDEO_GALLERY:
+                return Requests.REQUEST_VIDEO_GALLERY;
             case DOCUMENTS:
                 return Requests.REQUEST_DOCUMENTS;
         }
-        return Requests.REQUEST_PHOTO;
+        return Requests.REQUEST_PHOTO_GALLERY;
     }
 
     private static FileSource getFileSource(int request) {
         switch (request) {
-            case Requests.REQUEST_CAMERA:
-                return FileSource.CAMERA;
-            case Requests.REQUEST_PHOTO:
-                return FileSource.PHOTO;
-            case Requests.REQUEST_AUDIO:
-                return FileSource.AUDIO;
-            case Requests.REQUEST_VIDEO:
-                return FileSource.VIDEO;
+            case Requests.REQUEST_PHOTO_CAPTURE:
+                return FileSource.PHOTO_CAPTURE;
+            case Requests.REQUEST_AUDIO_CAPTURE:
+                return FileSource.AUDIO_CAPTURE;
+            case Requests.REQUEST_VIDEO_CAPTURE:
+                return FileSource.VIDEO_CAPTURE;
+            case Requests.REQUEST_PHOTO_GALLERY:
+                return FileSource.PHOTO_GALLERY;
+            case Requests.REQUEST_AUDIO_GALLERY:
+                return FileSource.AUDIO_GALLERY;
+            case Requests.REQUEST_VIDEO_GALLERY:
+                return FileSource.VIDEO_GALLERY;
             case Requests.REQUEST_DOCUMENTS:
                 return FileSource.DOCUMENTS;
         }
-        return FileSource.PHOTO;
+        return FileSource.PHOTO_GALLERY;
     }
 }

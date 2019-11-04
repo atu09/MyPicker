@@ -30,94 +30,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FilePicker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
+            <state relative-caret-position="321">
+              <caret line="166" column="32" selection-start-line="166" selection-start-column="32" selection-end-line="166" selection-end-column="32" />
               <folding>
+                <element signature="class#Requests#0;class#FilePicker#0" />
                 <element signature="class#Callbacks#0;class#FilePicker#0" />
                 <element signature="class#FileSource#0;class#FilePicker#0" />
                 <element signature="method#FilePicker#0;class#FilePicker#0" />
                 <element signature="method#FilePicker#1;class#FilePicker#0" />
-                <element signature="method#createCameraPictureFile#0;class#FilePicker#0" />
+                <element signature="method#createSourceFile#0;class#FilePicker#0" />
                 <element signature="method#createDocumentsIntent#0;class#FilePicker#0" />
-                <element signature="method#createCameraIntent#0;class#FilePicker#0" />
+                <element signature="e#2510#2662#1" />
+                <element signature="method#createPhotoCaptureIntent#0;class#FilePicker#0" />
+                <element signature="e#2816#3144#0" />
+                <element signature="e#3165#3209#0" />
+                <element signature="method#createPhotoCaptureIntent#1;class#FilePicker#0" />
+                <element signature="e#3901#3945#0" />
+                <element signature="method#createVideoCaptureIntent#1;class#FilePicker#0" />
+                <element signature="e#4241#4695#0" />
+                <element signature="e#4716#4760#0" />
                 <element signature="method#createIntent#0;class#FilePicker#0" />
                 <element signature="method#openPicker#0;class#FilePicker#0" />
-                <element signature="method#openPickerDialog#0;class#FilePicker#0" />
+                <element signature="e#5004#5074#1" />
+                <element signature="e#5124#5193#1" />
+                <element signature="e#5243#5312#1" />
+                <element signature="e#5362#5431#1" />
+                <element signature="e#5437#5510#1" />
                 <element signature="method#onFilePick#0;class#FilePicker#0" />
+                <element signature="e#5667#5857#0" />
+                <element signature="e#5878#5974#0" />
                 <element signature="method#onCamera#0;class#FilePicker#0" />
+                <element signature="e#6118#6207#1" />
+                <element signature="e#6283#6351#1" />
+                <element signature="e#6388#6572#1" />
+                <element signature="e#6578#6652#1" />
                 <element signature="method#handleActivityResult#0;class#FilePicker#0" />
                 <element signature="method#lastlyTakenButCanceledPhoto#0;class#FilePicker#0" />
+                <element signature="e#7915#7951#1" />
+                <element signature="e#7957#7993#1" />
                 <element signature="method#revokeWritePermission#0;class#FilePicker#0" />
                 <element signature="method#grantWritePermission#0;class#FilePicker#0" />
+                <element signature="e#8478#8698#1" />
                 <element signature="method#getRequest#0;class#FilePicker#0" />
                 <element signature="method#getFileSource#0;class#FilePicker#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioPlayer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="69" column="80" selection-start-line="69" selection-start-column="80" selection-end-line="69" selection-end-column="80" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#989#1169#0" expanded="true" />
-                <element signature="e#1168#1169#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioRecorder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="95" selection-start-line="95" selection-end-line="95" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="class#657:977" />
-                <element signature="e#926#927#0" expanded="true" />
-                <element signature="e#970#971#0" expanded="true" />
-                <element signature="method#setUpRecorder#0;class#AudioRecorder#0" />
-                <element signature="method#startRecording#0;class#AudioRecorder#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FileConfigure.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="105" column="6" selection-start-line="105" selection-start-column="6" selection-end-line="105" selection-end-column="6" />
-              <folding>
-                <element signature="method#privateDirectory#0;class#FileConfigure#0" />
-                <element signature="e#660#725#1" />
-                <element signature="method#getFile#0;class#FileConfigure#0" />
-                <element signature="method#getFolderName#0;class#FileConfigure#0" />
-                <element signature="method#getMimeType#0;class#FileConfigure#0" />
-                <element signature="e#1743#1954#1" />
-                <element signature="e#1960#2293#1" />
-                <element signature="e#1974#1995#0" />
-                <element signature="method#writeToFile#0;class#FileConfigure#0" />
-                <element signature="e#2414#2761#0" />
-                <element signature="e#2612#2682#1" />
-                <element signature="e#2782#2826#0" />
-                <element signature="method#pickedExistingFile#0;class#FileConfigure#0" />
-                <element signature="method#clearFiles#0;class#FileConfigure#0" />
-                <element signature="e#3439#3592#1" />
-                <element signature="e#3477#3582#1" />
-                <element signature="e#3514#3568#1" />
-                <element signature="method#deleteFile#0;class#FileConfigure#0" />
-                <element signature="e#3674#3712#1" />
-                <element signature="method#generateNewFile#0;class#FileConfigure#0" />
-                <element signature="e#3906#3943#1" />
-                <element signature="method#isExternalStorageWritable#0;class#FileConfigure#0" />
               </folding>
             </state>
           </provider>
@@ -155,9 +113,9 @@
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/picker/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FilePicker.java" />
         <option value="$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioRecorder.java" />
         <option value="$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioPlayer.java" />
+        <option value="$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FilePicker.java" />
       </list>
     </option>
   </component>
@@ -180,6 +138,11 @@
             <path>
               <item name="MyPicker" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="MyPicker" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
             </path>
             <path>
               <item name="MyPicker" type="1abcf292:AndroidViewProjectNode" />
@@ -439,7 +402,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26108727" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26108727" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -450,8 +413,8 @@
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="1" />
       <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.3277311" />
-      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49928468" weight="0.3277311" />
+      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5007153" side_tool="true" weight="0.3277311" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.3277311" />
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32971507" />
@@ -553,33 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FilePicker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
-          <folding>
-            <element signature="class#Callbacks#0;class#FilePicker#0" />
-            <element signature="class#FileSource#0;class#FilePicker#0" />
-            <element signature="method#FilePicker#0;class#FilePicker#0" />
-            <element signature="method#FilePicker#1;class#FilePicker#0" />
-            <element signature="method#createCameraPictureFile#0;class#FilePicker#0" />
-            <element signature="method#createDocumentsIntent#0;class#FilePicker#0" />
-            <element signature="method#createCameraIntent#0;class#FilePicker#0" />
-            <element signature="method#createIntent#0;class#FilePicker#0" />
-            <element signature="method#openPicker#0;class#FilePicker#0" />
-            <element signature="method#openPickerDialog#0;class#FilePicker#0" />
-            <element signature="method#onFilePick#0;class#FilePicker#0" />
-            <element signature="method#onCamera#0;class#FilePicker#0" />
-            <element signature="method#handleActivityResult#0;class#FilePicker#0" />
-            <element signature="method#lastlyTakenButCanceledPhoto#0;class#FilePicker#0" />
-            <element signature="method#revokeWritePermission#0;class#FilePicker#0" />
-            <element signature="method#grantWritePermission#0;class#FilePicker#0" />
-            <element signature="method#getRequest#0;class#FilePicker#0" />
-            <element signature="method#getFileSource#0;class#FilePicker#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioRecorder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
@@ -628,12 +564,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="69" column="80" selection-start-line="69" selection-start-column="80" selection-end-line="69" selection-end-column="80" />
+        <state relative-caret-position="1035">
+          <caret line="69" column="35" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#989#1169#0" expanded="true" />
             <element signature="e#1168#1169#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FilePicker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="166" column="32" selection-start-line="166" selection-start-column="32" selection-end-line="166" selection-end-column="32" />
+          <folding>
+            <element signature="class#Requests#0;class#FilePicker#0" />
+            <element signature="class#Callbacks#0;class#FilePicker#0" />
+            <element signature="class#FileSource#0;class#FilePicker#0" />
+            <element signature="method#FilePicker#0;class#FilePicker#0" />
+            <element signature="method#FilePicker#1;class#FilePicker#0" />
+            <element signature="method#createSourceFile#0;class#FilePicker#0" />
+            <element signature="method#createDocumentsIntent#0;class#FilePicker#0" />
+            <element signature="e#2510#2662#1" />
+            <element signature="method#createPhotoCaptureIntent#0;class#FilePicker#0" />
+            <element signature="e#2816#3144#0" />
+            <element signature="e#3165#3209#0" />
+            <element signature="method#createPhotoCaptureIntent#1;class#FilePicker#0" />
+            <element signature="e#3901#3945#0" />
+            <element signature="method#createVideoCaptureIntent#1;class#FilePicker#0" />
+            <element signature="e#4241#4695#0" />
+            <element signature="e#4716#4760#0" />
+            <element signature="method#createIntent#0;class#FilePicker#0" />
+            <element signature="method#openPicker#0;class#FilePicker#0" />
+            <element signature="e#5004#5074#1" />
+            <element signature="e#5124#5193#1" />
+            <element signature="e#5243#5312#1" />
+            <element signature="e#5362#5431#1" />
+            <element signature="e#5437#5510#1" />
+            <element signature="method#onFilePick#0;class#FilePicker#0" />
+            <element signature="e#5667#5857#0" />
+            <element signature="e#5878#5974#0" />
+            <element signature="method#onCamera#0;class#FilePicker#0" />
+            <element signature="e#6118#6207#1" />
+            <element signature="e#6283#6351#1" />
+            <element signature="e#6388#6572#1" />
+            <element signature="e#6578#6652#1" />
+            <element signature="method#handleActivityResult#0;class#FilePicker#0" />
+            <element signature="method#lastlyTakenButCanceledPhoto#0;class#FilePicker#0" />
+            <element signature="e#7915#7951#1" />
+            <element signature="e#7957#7993#1" />
+            <element signature="method#revokeWritePermission#0;class#FilePicker#0" />
+            <element signature="method#grantWritePermission#0;class#FilePicker#0" />
+            <element signature="e#8478#8698#1" />
+            <element signature="method#getRequest#0;class#FilePicker#0" />
+            <element signature="method#getFileSource#0;class#FilePicker#0" />
           </folding>
         </state>
       </provider>
