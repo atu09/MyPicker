@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
@@ -24,9 +25,10 @@ public class FilePicker {
 
     public interface Requests {
         int REQUEST_CAMERA = 7456;
-        int REQUEST_DOCUMENTS = 7457;
-        int REQUEST_VIDEO = 7458;
-        int REQUEST_PHOTO = 7459;
+        int REQUEST_PHOTO = 7457;
+        int REQUEST_AUDIO = 7458;
+        int REQUEST_VIDEO = 7459;
+        int REQUEST_DOCUMENTS = 7460;
     }
 
     public interface Callbacks {
@@ -38,12 +40,11 @@ public class FilePicker {
     }
 
     public enum FileSource {
-        CAMERA, PHOTO, VIDEO, DOCUMENTS
+        CAMERA, PHOTO, VIDEO, AUDIO, DOCUMENTS
     }
 
     private Activity activity;
-    private String lastImageUri = null;
-    private String lastImagePath = null;
+    private String lastImageUri = null, lastImagePath = null;
 
     public FilePicker(Activity activity, String folder) {
         this.activity = activity;
@@ -70,7 +71,12 @@ public class FilePicker {
 
     private Intent createDocumentsIntent() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("*/*");
+        //intent.setType("*/*");
+        intent.setType("application/pdf|application/msword");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            String[] mimeTypes = {"application/pdf", "application/msword"};
+            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+        }
         return intent;
     }
 
@@ -91,6 +97,8 @@ public class FilePicker {
     private Intent createIntent(FileSource fileSource) {
         if (fileSource == FileSource.PHOTO) {
             return new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        } else if (fileSource == FileSource.AUDIO) {
+            return new Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
         } else if (fileSource == FileSource.VIDEO) {
             return new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
         } else if (fileSource == FileSource.CAMERA) {
@@ -111,6 +119,7 @@ public class FilePicker {
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(activity, R.layout.cell_picker);
         arrayAdapter.add("Camera");
         arrayAdapter.add("Photo");
+        arrayAdapter.add("Audio");
         arrayAdapter.add("Video");
         arrayAdapter.add("Document");
 
@@ -128,6 +137,8 @@ public class FilePicker {
                     openPicker(FileSource.CAMERA);
                 } else if (position == FileSource.PHOTO.ordinal()) {
                     openPicker(FileSource.PHOTO);
+                } else if (position == FileSource.AUDIO.ordinal()) {
+                    openPicker(FileSource.AUDIO);
                 } else if (position == FileSource.VIDEO.ordinal()) {
                     openPicker(FileSource.VIDEO);
                 } else {
@@ -140,9 +151,9 @@ public class FilePicker {
 
     private void onFilePick(Intent data, FileSource fileSource, Callbacks callbacks) {
         try {
-            Uri photoPath = data.getData();
-            File photoFile = FileConfigure.pickedExistingFile(activity, photoPath);
-            callbacks.onPicked(photoFile, fileSource);
+            Uri filePath = data.getData();
+            File dataFile = FileConfigure.pickedExistingFile(activity, filePath);
+            callbacks.onPicked(dataFile, fileSource);
         } catch (Exception e) {
             e.printStackTrace();
             callbacks.onPickerError(e, fileSource);
@@ -177,16 +188,27 @@ public class FilePicker {
     }
 
     public void handleActivityResult(int requestCode, int resultCode, Intent data, Callbacks callbacks) {
-        if (requestCode == Requests.REQUEST_DOCUMENTS || requestCode == Requests.REQUEST_CAMERA
-                || requestCode == Requests.REQUEST_PHOTO || requestCode == Requests.REQUEST_VIDEO) {
 
+        boolean isRequested = false;
+        switch (requestCode) {
+            case Requests.REQUEST_CAMERA:
+            case Requests.REQUEST_PHOTO:
+            case Requests.REQUEST_AUDIO:
+            case Requests.REQUEST_VIDEO:
+            case Requests.REQUEST_DOCUMENTS:
+                isRequested = true;
+        }
+
+        if (isRequested) {
             FileSource fileSource = getFileSource(requestCode);
             if (resultCode == Activity.RESULT_OK) {
+
                 if (fileSource != FileSource.CAMERA) {
                     onFilePick(data, fileSource, callbacks);
                 } else {
                     onCamera(fileSource, callbacks);
                 }
+
             } else {
                 callbacks.onCanceled(fileSource);
             }
@@ -221,6 +243,8 @@ public class FilePicker {
                 return Requests.REQUEST_CAMERA;
             case PHOTO:
                 return Requests.REQUEST_PHOTO;
+            case AUDIO:
+                return Requests.REQUEST_AUDIO;
             case VIDEO:
                 return Requests.REQUEST_VIDEO;
             case DOCUMENTS:
@@ -235,6 +259,8 @@ public class FilePicker {
                 return FileSource.CAMERA;
             case Requests.REQUEST_PHOTO:
                 return FileSource.PHOTO;
+            case Requests.REQUEST_AUDIO:
+                return FileSource.AUDIO;
             case Requests.REQUEST_VIDEO:
                 return FileSource.VIDEO;
             case Requests.REQUEST_DOCUMENTS:
