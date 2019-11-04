@@ -29,43 +29,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FilePicker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1298">
-              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="class#Requests#0;class#FilePicker#0" />
-                <element signature="class#Callbacks#0;class#FilePicker#0" />
-                <element signature="class#FileSource#0;class#FilePicker#0" />
-                <element signature="method#FilePicker#0;class#FilePicker#0" />
-                <element signature="method#FilePicker#1;class#FilePicker#0" />
-                <element signature="method#createSourceFile#0;class#FilePicker#0" />
-                <element signature="method#createDocumentsIntent#0;class#FilePicker#0" />
-                <element signature="method#createPhotoCaptureIntent#0;class#FilePicker#0" />
-                <element signature="method#createIntent#0;class#FilePicker#0" />
-                <element signature="e#5014#5072#1" />
-                <element signature="e#5122#5180#1" />
-                <element signature="e#5230#5288#1" />
-                <element signature="method#openPicker#0;class#FilePicker#0" />
-                <element signature="method#openPickerDialog#0;class#FilePicker#0" />
-                <element signature="e#7173#7250#1" />
-                <element signature="e#7303#7380#1" />
-                <element signature="method#onFilePick#0;class#FilePicker#0" />
-                <element signature="method#handleActivityResult#0;class#FilePicker#0" />
-                <element signature="method#lastlyTakenButCanceledPhoto#0;class#FilePicker#0" />
-                <element signature="method#revokeWritePermission#0;class#FilePicker#0" />
-                <element signature="method#grantWritePermission#0;class#FilePicker#0" />
-                <element signature="method#getRequest#0;class#FilePicker#0" />
-                <element signature="method#getFileSource#0;class#FilePicker#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -116,7 +80,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MyPicker" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -184,17 +158,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="MyPicker" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -344,7 +308,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="829" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26108727" />
