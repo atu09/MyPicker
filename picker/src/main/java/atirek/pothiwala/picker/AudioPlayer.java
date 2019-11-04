@@ -65,6 +65,13 @@ public class AudioPlayer {
         }
     }
 
+    public void seekTo(int seconds) {
+        if (player != null) {
+            player.seekTo(seconds);
+            listener.OnTimer(player.getCurrentPosition(), player.getDuration());
+        }
+    }
+
     public void releasePlayer() {
         if (player != null) {
             player.stop();
