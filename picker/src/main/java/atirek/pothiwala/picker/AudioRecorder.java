@@ -19,6 +19,11 @@ public class AudioRecorder {
     private MediaRecorder recorder = new MediaRecorder();
     private String audioFilePath;
     private int totalSeconds = 30;
+    private boolean isRecording = false;
+
+    public boolean isRecording() {
+        return isRecording;
+    }
 
     public void setTotalSeconds(int totalSeconds) {
         this.totalSeconds = totalSeconds;
@@ -72,6 +77,8 @@ public class AudioRecorder {
 
             countDownTimer.start();
 
+            isRecording = true;
+
             return true;
 
         } catch (Exception e) {
@@ -93,6 +100,7 @@ public class AudioRecorder {
                 recorder = null;
             }
             countDownTimer.cancel();
+            isRecording = false;
 
             if (isDelete){
                 FileConfigure.deleteFile(new File(audioFilePath));

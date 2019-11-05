@@ -25,6 +25,13 @@ public class AudioPlayer {
     private String audioPath;
     private Handler handler = new Handler();
 
+    public boolean isPlaying() {
+        if (player != null){
+            return player.isPlaying();
+        }
+        return false;
+    }
+
     public AudioPlayer(Context context, String audioPath, OnPlayerListener listener) {
         this.context = context;
         this.audioPath = audioPath;
@@ -88,9 +95,11 @@ public class AudioPlayer {
 
     private Runnable UpdateMediaTime = new Runnable() {
         public void run() {
-            listener.OnTimer(player.getCurrentPosition(), player.getDuration());
-            if (player.isPlaying()) {
-                handler.postDelayed(this, 1000);
+            if (player != null){
+                listener.OnTimer(player.getCurrentPosition(), player.getDuration());
+                if (player.isPlaying()) {
+                    handler.postDelayed(this, 1000);
+                }
             }
         }
     };
