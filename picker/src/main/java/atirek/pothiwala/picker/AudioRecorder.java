@@ -2,7 +2,6 @@ package atirek.pothiwala.picker;
 
 import android.content.Context;
 import android.media.MediaRecorder;
-import android.os.Build;
 import android.os.CountDownTimer;
 
 import java.io.File;
@@ -53,16 +52,13 @@ public class AudioRecorder {
     private void setUpRecorder() {
         try {
             recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
             recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+            recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
 
-            File audioFile = FileConfigure.generateNewFile(context, "3gp");
-            audioFilePath = audioFile.getAbsolutePath();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                recorder.setOutputFile(audioFile);
-            } else {
-                recorder.setOutputFile(audioFilePath);
-            }
+            audioFilePath = FileConfigure.generateNewFile(context, "3gp").getAbsolutePath();
+            recorder.setOutputFile(audioFilePath);
+            recorder.prepare();
+
             onRecordListener.OnTimer(0, totalSeconds);
 
         } catch (Exception e) {
@@ -77,10 +73,7 @@ public class AudioRecorder {
             if (recorder == null){
                 setUpRecorder();
             }
-
-            recorder.prepare();
             recorder.start();
-
             countDownTimer.start();
 
             isRecording = true;
