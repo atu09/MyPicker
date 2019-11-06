@@ -51,11 +51,11 @@ public class AudioRecorder {
 
     private void setUpRecorder() {
         try {
-            recorder.setAudioSource(MediaRecorder.AudioSource.VOICE_RECOGNITION);
+            recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
             recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             audioFilePath = FileConfigure.generateNewFile(context, "3gp").getAbsolutePath();
             recorder.setOutputFile(audioFilePath);
+            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             recorder.prepare();
 
             onRecordListener.OnTimer(0, totalSeconds);
@@ -101,6 +101,7 @@ public class AudioRecorder {
 
             if (isDelete){
                 FileConfigure.deleteFile(new File(audioFilePath));
+                audioFilePath = null;
             } else {
                 onRecordListener.OnComplete(audioFilePath);
             }
