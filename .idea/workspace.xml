@@ -35,14 +35,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioRecorder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+            <state relative-caret-position="216">
+              <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#AudioRecorder#0;class#AudioRecorder#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FilePicker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="class#Requests#0;class#FilePicker#0" />
+                <element signature="class#Callbacks#0;class#FilePicker#0" />
+                <element signature="e#1673#1674#0" expanded="true" />
+                <element signature="e#1721#1722#0" expanded="true" />
+                <element signature="method#FilePicker#0;class#FilePicker#0" />
+                <element signature="method#FilePicker#1;class#FilePicker#0" />
+                <element signature="method#createSourceFile#0;class#FilePicker#0" />
+                <element signature="method#createDocumentsIntent#0;class#FilePicker#0" />
+                <element signature="method#createPhotoCaptureIntent#0;class#FilePicker#0" />
+                <element signature="method#createIntent#0;class#FilePicker#0" />
+                <element signature="method#openPicker#0;class#FilePicker#0" />
+                <element signature="method#openPickerDialog#0;class#FilePicker#0" />
+                <element signature="method#onFilePick#0;class#FilePicker#0" />
+                <element signature="method#handleActivityResult#0;class#FilePicker#0" />
+                <element signature="method#lastlyTakenButCanceledPhoto#0;class#FilePicker#0" />
+                <element signature="method#revokeWritePermission#0;class#FilePicker#0" />
+                <element signature="method#grantWritePermission#0;class#FilePicker#0" />
+                <element signature="method#getRequest#0;class#FilePicker#0" />
+                <element signature="method#getFileSource#0;class#FilePicker#0" />
               </folding>
             </state>
           </provider>
@@ -80,12 +111,12 @@
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/picker/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FilePicker.java" />
         <option value="$PROJECT_DIR$/picker/build.gradle" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioPlayer.java" />
         <option value="$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioRecorder.java" />
+        <option value="$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FilePicker.java" />
       </list>
     </option>
   </component>
@@ -363,7 +394,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26108727" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26108727" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -374,7 +405,7 @@
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.5966387" />
       <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="3" sideWeight="0.49928468" visible="true" weight="0.3277311" />
+      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49928468" weight="0.3277311" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5007153" side_tool="true" weight="0.3277311" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.3277311" />
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
@@ -524,15 +555,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioRecorder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="43" column="28" lean-forward="true" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#AudioRecorder#0;class#AudioRecorder#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/android/provider/MediaStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="362" lean-forward="true" selection-start-line="362" selection-end-line="362" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/FilePicker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1067">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        <state relative-caret-position="199">
+          <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#Requests#0;class#FilePicker#0" />
             <element signature="class#Callbacks#0;class#FilePicker#0" />
-            <element signature="class#FileSource#0;class#FilePicker#0" />
+            <element signature="e#1673#1674#0" expanded="true" />
+            <element signature="e#1721#1722#0" expanded="true" />
             <element signature="method#FilePicker#0;class#FilePicker#0" />
             <element signature="method#FilePicker#1;class#FilePicker#0" />
             <element signature="method#createSourceFile#0;class#FilePicker#0" />
@@ -548,17 +598,6 @@
             <element signature="method#grantWritePermission#0;class#FilePicker#0" />
             <element signature="method#getRequest#0;class#FilePicker#0" />
             <element signature="method#getFileSource#0;class#FilePicker#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioRecorder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#AudioRecorder#0;class#AudioRecorder#0" />
           </folding>
         </state>
       </provider>
