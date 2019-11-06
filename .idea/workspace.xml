@@ -38,14 +38,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioRecorder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+            <state relative-caret-position="902">
+              <caret line="103" column="37" selection-start-line="103" selection-start-column="37" selection-end-line="103" selection-end-column="37" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="class#OnRecordListener#0;class#AudioRecorder#0" />
                 <element signature="class#768:1088" />
+                <element signature="method#onTick#0;class#768:1088" />
                 <element signature="method#AudioRecorder#0;class#AudioRecorder#0" />
-                <element signature="method#startRecording#0;class#AudioRecorder#0" />
               </folding>
             </state>
           </provider>
@@ -366,7 +365,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26108727" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26108727" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -569,14 +568,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/picker/src/main/java/atirek/pothiwala/picker/AudioRecorder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+        <state relative-caret-position="902">
+          <caret line="103" column="37" selection-start-line="103" selection-start-column="37" selection-end-line="103" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="class#OnRecordListener#0;class#AudioRecorder#0" />
             <element signature="class#768:1088" />
+            <element signature="method#onTick#0;class#768:1088" />
             <element signature="method#AudioRecorder#0;class#AudioRecorder#0" />
-            <element signature="method#startRecording#0;class#AudioRecorder#0" />
           </folding>
         </state>
       </provider>
