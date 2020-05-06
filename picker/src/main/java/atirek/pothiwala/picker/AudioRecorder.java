@@ -55,6 +55,7 @@ public class AudioRecorder {
 
     private void setUpRecorder() {
         try {
+            recorder = new MediaRecorder(); 
             recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
             recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
             audioFilePath = FileConfigure.generateNewFile(context, "3gp").getAbsolutePath();

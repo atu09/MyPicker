@@ -52,7 +52,7 @@ public class FilePicker {
     private Activity activity;
     private String lastFileUri = null, lastFilePath = null;
     private VideoQuality videoQuality = VideoQuality.LOW;
-    private int durationLimit = 0;
+    private int durationLimit = 30;
     private int sizeLimit = 0;
 
     public void setVideoQuality(VideoQuality videoQuality) {
@@ -124,7 +124,9 @@ public class FilePicker {
             grantWritePermission(activity, intent, capturedFileUri);
 
             intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, videoQuality.ordinal());
-            intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, durationLimit);
+            if (durationLimit > 0){
+                intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, durationLimit);
+            }
             intent.putExtra(MediaStore.EXTRA_OUTPUT, capturedFileUri);
         } catch (Exception e) {
             e.printStackTrace();
@@ -140,7 +142,9 @@ public class FilePicker {
             //We have to explicitly grant the write permission since Intent.setFlag works only on API Level >=20
             grantWritePermission(activity, intent, capturedFileUri);
 
-            intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, durationLimit);
+            if (durationLimit > 0){
+                intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, durationLimit);
+            }
             intent.putExtra(MediaStore.EXTRA_OUTPUT, capturedFileUri);
         } catch (Exception e) {
             e.printStackTrace();
