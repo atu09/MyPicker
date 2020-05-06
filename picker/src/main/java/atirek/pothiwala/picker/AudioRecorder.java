@@ -11,6 +11,10 @@ public class AudioRecorder {
     public interface OnRecordListener {
         void OnTimer(int currentSeconds, int totalSeconds);
 
+        void OnPlay();
+
+        void OnStop();
+
         void OnComplete(String path);
 
         void OnException(String exception);
